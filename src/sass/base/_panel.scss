@@ -1,0 +1,79 @@
+%panel-padding {
+  padding: .5em 1em;
+}
+
+.panel {
+  @extend .sombra-media;
+  @extend %panel-padding;
+  border-radius: 3px;
+  margin-bottom: 1em;
+}
+
+.panel__footer {
+  @extend %serif;
+  @extend %panel-padding;
+  border-top: 1px solid $grisd;
+  color: $gris6;
+  font-size: .8em;
+}
+
+
+.panel--lila {
+  @extend .fondo--lila;
+}
+
+.panel--morado {
+  @extend .fondo--morado;
+}
+
+.panel--indigo {
+  @extend .fondo--indigo;
+}
+
+.panel--azul {
+  @extend .fondo--azul;
+}
+
+.panel--celeste {
+  @extend .fondo--celeste;
+}
+
+.panel--cyan {
+  @extend .fondo--cyan;
+}
+
+.panel--turquesa {
+  @extend .fondo--turquesa;
+}
+
+.panel--verde {
+  @extend .fondo--verde;
+}
+
+.panel--kiwi {
+  @extend .fondo--kiwi;
+}
+
+.panel--amarillo {
+  @extend .fondo--amarillo;
+}
+
+.panel--ambar {
+  @extend .fondo--ambar;
+}
+
+.panel--naranja {
+  @extend .fondo--naranja;
+}
+
+.panel--tomate {
+  @extend .fondo--tomate;
+}
+
+.panel--rojo {
+  @extend .fondo--rojo;
+}
+
+.panel--rosado {
+  @extend .fondo--rosado;
+}

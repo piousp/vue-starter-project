@@ -1,0 +1,16 @@
+{
+  "presets": [
+    ["env", {
+      "modules": false,
+      "targets": {
+        "browsers": ["> 5%", "last 5 versions", "not ie <= 8"]
+      }
+    }]
+  ],
+  "env": {
+    "test": {
+      "presets": ["env"],
+      "plugins": ["istanbul"]
+    }
+  }
+}

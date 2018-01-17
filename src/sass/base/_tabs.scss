@@ -1,0 +1,45 @@
+.tabs {
+  background: $naranja-pastel;
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+
+}
+
+
+.tabs__tab {
+  @extend .text--center;
+  @extend %sans;
+  background: transparent;
+  cursor: pointer;
+  flex-basis: 0;
+  flex-grow: 1;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  span {
+    display: none;
+  }
+
+  @media(min-width: $reflex-md) {
+    span {
+      display: inline;
+    }
+  }
+
+}
+
+.tabs__tab--active {
+  background: $blanco;
+  color: $negro4;
+  pointer-events: none;
+}
+
+.tabs__tab--deshabilitado {
+  background: transparentize($gris8, .3);
+  color: transparentize($blanco, .67);
+  cursor: not-allowed;
+}

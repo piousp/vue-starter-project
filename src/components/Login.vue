@@ -1,0 +1,121 @@
+<template>
+  <section class="login">
+    <form class="login__body" novalidate v-on:submit.stop.prevent="login()">
+      <div class="text--center">
+        <img src="/static/Ciris-contraforma.png" alt="Ciris" class="img-responsive" height="200px">
+      </div>
+      <div class="form__group" v-bind:class="{ 'form__group--error': errors.has('usuario') && submitted }">
+        <label for="usuario" class="form__label">Correo:</label>
+        <div class="form__input-group">
+          <span class="form__input-group__addon"><i class="fa fa-fw fa-user"></i></span>
+          <input name="usuario" id="usuario" type="text" class="form__input login__input"  v-model="usuario" placeholder="usuario@dominio.com" v-validate="'required'" @input="usuario = usuario.toLowerCase()">
+        </div>
+      </div>
+      <div class="form__group" v-bind:class="{ 'form__group--error': errors.has('password') && submitted }">
+        <label for="password" class="form__label">Contraseña:</label>
+        <div class="form__input-group">
+          <span class="form__input-group__addon"><i class="fa fa-fw fa-lock"></i></span>
+          <input name="password" id="password" type="password" class="form__input login__input"  v-model="password" placeholder="********" v-validate="'required'">
+        </div>
+      </div>
+      <br>
+      <div class="text--center">
+        <button class="boton boton--verde-o boton--l" type="submit">
+          <i class="fa fa-fw fa-sign-in"></i>
+          Iniciar sesión
+        </button>
+      </div>
+    </form>
+  </section>
+</template>
+
+<script>
+export default {
+  data: function() {
+    return {
+      usuario: '',
+      password: '',
+      recordar: true,
+      submitted: false
+    }
+  },
+  methods: {
+    login() {
+      this.submitted = true;
+      this.$validator.validateAll();
+      if(!this.errors.any()){
+        this.$auth.login(this.usuario, this.password, this.recordar)
+        .then(response => {
+          this.$router.push({name: "home"});
+          this.$toastr('success', this.$t("login.success"));
+        })
+        .catch(err => {
+          this.$toastr('error', this.$t("login.error"));
+          console.error(err);
+        })
+      }
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+@import "../sass/base/colores";
+@import "../sass/base/helpers";
+
+.login {
+  align-items: center;
+  background: url("/static/fondo.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+
+  &::before {
+    background: transparentize($negro2, .5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 2;
+  }
+}
+
+.login__body {
+  @extend .sombra;
+  background: transparentize($negro, .4);
+  padding: 15px 0;
+  width: 90%;
+
+  @media (min-width: 992px) {
+    padding: 1em;
+    width: 45%;
+  }
+}
+
+.login__label {
+  font-size: 90%;
+  font-weight: bolder;
+}
+
+.login__boton {
+  margin-top: 15px;
+  width: 96%;
+}
+
+@media (min-width: 992px) {
+
+  .login__label {
+    font-size: 90%;
+    font-weight: bolder;
+    justify-content: flex-end;
+    text-align: right;
+  }
+}
+
+.login__input {
+  background: transparent;
+  color: $blanco;
+}
+
+</style>

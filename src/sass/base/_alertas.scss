@@ -1,0 +1,92 @@
+.alertas {
+  position: fixed;
+  top: 0;
+  right: 10px;
+  width: 100%;
+  z-index: 99;
+
+  @media(min-width: $reflex-md) {
+    width: auto;
+  }
+}
+
+.alertas__alerta {
+  @extend .sombra-media;
+  @extend .animated;
+  @extend .rotateInDownRight;
+  animation-duration: .45s !important;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 15px 0;
+  overflow: hidden;
+  padding: 10px;
+  padding-left: 50px;
+  position: relative;
+  width: 100%;
+
+  @media(min-width: $reflex-md) {
+    width: 300px;
+  }
+
+}
+
+.alertas__alerta__cerrar {
+  color: transparentize($blanco, .5);
+  cursor: pointer;
+  position: absolute;
+  right: 3px;
+  top: 3px;
+}
+
+.alertas__alerta__titulo {
+  @extend %sans;
+  font-size: 1.2;
+  font-weight: bold;
+}
+
+.alertas__alerta__mensaje {
+  @extend %sans;
+  color: $blanco;
+  font-size: small;
+}
+
+@mixin estilo-alerta($color, $icono, $animacion) {
+  background: transparentize(darken($color, 45%), .1);
+
+  .alertas__alerta__titulo {
+    color: $color;
+  }
+
+  &::before {
+    @extend .animated;
+    @extend #{$animacion};
+    @extend %font-awesome;
+    color: $color;
+    content: $icono;
+    font-size: 2em;
+    left: 13px;
+    position: absolute;
+    text-shadow: 0 2px 2px transparentize($negro4, .5);
+    top: 13px;
+  }
+}
+
+.alertas__alerta--success {
+  @include estilo-alerta($kiwi-vivo, "\f00c", ".tada");
+}
+
+.alertas__alerta--info {
+  @include estilo-alerta($cyan-vivo, "\f129", ".pulse");
+}
+
+.alertas__alerta--warning {
+  @include estilo-alerta($ambar-vivo, "\f12a", ".shake");
+}
+
+.alertas__alerta--error {
+  @include estilo-alerta($rosado-vivo, "\f0f3", ".swing");
+
+  &::before{
+    @extend .infinite;
+  }
+}
