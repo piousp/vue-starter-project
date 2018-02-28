@@ -77,3 +77,52 @@
 .panel--rosado {
   @extend .fondo--rosado;
 }
+
+.panel__tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1em;
+  overflow: hidden;
+}
+
+.panel__tab {
+  @extend .text--center;
+  @extend %sans;
+  cursor: pointer;
+  flex-basis: 0;
+  flex-grow: 1;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-bottom: 1px solid $grisa;
+
+  span {
+    display: none;
+  }
+
+  @media(min-width: $reflex-md) {
+    span {
+      display: inline;
+    }
+  }
+}
+
+.panel__tab--active {
+  @extend %border-radius-top;
+  background: $blanco;
+  border-bottom: none;
+  border-left: 1px solid $grisa;
+  border-right: 1px solid $grisa;
+  border-top: 1px solid $grisa;
+  color: $verde;
+  pointer-events: none;
+}
+
+.panel__tab--disabled {
+  background: transparentize($gris8, .3);
+  color: transparentize($blanco, .67);
+  cursor: not-allowed;
+  pointer-events: none;
+}

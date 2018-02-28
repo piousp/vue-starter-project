@@ -1,33 +1,33 @@
 <template lang="html">
   <nav class="navbar">
     <div class="navbar__left">
-      <div class="navbar__logo">
-        <i class="fa fa-fw fa-bars fa-2x" v-on:click="mostrarMenu"></i>
-        <img src="/static/Ciris-contraforma.png" alt="Ciris" height="40px">
-      </div>
+      <i class="navbar__left__menu far fa-bars fa-2x" v-on:click="mostrarMenu"></i>
     </div>
-    <div class="navbar__right text--left">
-      <i class="fa fa-fw" v-bind:class="titulo.meta.icono"></i>
-      <span class="text text--grisc">{{titulo.meta.titulo}}</span>
-      <popover name="default" class="popover float--right">
+    <div class="navbar__right" v-if="nombreUsuario !== 'undefined'">
+      <div class="navbar__right__elem">
+        <i class="fa fa-fw" v-bind:class="titulo.meta.icono"></i>
+        <span class="text text--negro4">{{titulo.meta.titulo}}</span>
+      </div>
+      <div class="navbar__right__botones navbar__right__elem"></div>
+      <popover name="default" class="popover">
         <div slot="face" class="navbar__popover">
-          <i class="fa fa-fw fa-user-circle-o"></i>
+          <i class="far fa-fw fa-user-circle"></i>
           <span>{{nombreUsuario}}</span>
-          <i class="fa fa-fw fa-caret-down"></i>
+          <i class="fas fa-fw fa-caret-down"></i>
         </div>
         <div slot="content">
           <ul class="popover__list">
             <router-link class="popover__list__item" tag="li" :to="{ name: 'parametros' }">
-              <i class="fa fa-fw fa-cog"></i>
+              <i class="fal fa-fw fa-cog"></i>
               <span>Configuración</span>
             </router-link>
             <li class="popover__list__item" v-on:click="logout">
-              <i class="fa fa-fw fa-sign-out"></i>
+              <i class="fal fa-fw fa-sign-out"></i>
               <span>Cerrar sesión</span>
             </li>
             <li class="popover__list__divider"></li>
             <li class="text--small text--italic navbar__version">
-              <i class="fa fa-fw fa-tags"></i>
+              <i class="fal fa-fw fa-tags"></i>
               <span>Versión: {{version}}</span>
             </li>
           </ul>
@@ -90,46 +90,78 @@ function version() {
 <style lang="scss">
   @import "../sass/base/colores";
   @import "../sass/base/helpers";
-  @import "../sass/base/resets";
+  @import "../sass/tema/globales";
   $ancho-menu: 200px;
   $ancho-menu-movil: 160px;
   .navbar {
+    background: $blanco;
+    box-shadow: inset 0 -1px 0 $grisd;
     top: 0;
     left: 0;
     height: 52px;
     width: 100%;
     z-index: 2;
-    background: $negro2;
-    box-shadow: inset 0 -1px 0 $grisc;
 
     @media (min-width: $reflex-md ) {
       position: fixed;
     }
   }
   .navbar__left {
+    background: $azul;
+    display: block;
+    height: 52px;
     width: 50px;
+    padding: .7em 1em;
     float:left;
 
     @media (min-width: $reflex-md ) {
       width: $ancho-menu;
     }
   }
+
+  .navbar__left__menu{
+    color: $blanco;
+    text-shadow: 0 1px 1px $sombra1;
+    cursor: pointer;
+  }
   .navbar__right {
-    margin-left: 50px;
     text-align: center;
-    padding: 15px;
-    color: $grisc;
+    color: $negro4;
+    padding: 0 1em;
+    height: 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     @media (min-width: $reflex-md ) {
-      margin-left: $ancho-menu;
       text-align: left;
     }
   }
+
+  .navbar__right__elem{
+    position: relative;
+
+    .boton {
+      margin: 0 5px;
+    }
+  }
+
+  .popover{
+    position:inherit !important;
+  }
+
+  .popover__container{
+    position: absolute;
+    right: -16px;
+    top: 52px;
+    width: 200px;
+  }
+
   .navbar__logo {
     padding: 5px;
     height: 100%;
     .fa {
-      color: $grisc;
+      color: $negro4;
       display: inherit;
     }
     img {
@@ -164,7 +196,6 @@ function version() {
   .navbar__popover {
     cursor: pointer;
     text-align: right;
-    margin-bottom: 9px;
   }
   .navbar__version {
     padding: 8px 16px;

@@ -7,11 +7,22 @@
     content: $icono;
     display: inline-block;
     text-shadow: 0 1px 1px $sombra1;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering:optimizeLegibility;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
   }
 
   &::after {
-    @extend .text--bold;
+    @extend %sans;
     display: inline-block;
+    text-shadow: 0 1px 1px $sombra1;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering:optimizeLegibility;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
   }
 
   @media(min-width: $reflex-md) {
@@ -23,7 +34,7 @@
 }
 
 .boton--guardar {
-  @include boton-expecial(".boton--verde", $kiwi-vivo, "\f019", ".flip", "Guardar");
+  @include boton-expecial(".boton--verde", $ambar, "\f019", ".flip", "Guardar");
 }
 
 .boton--cancelar {
@@ -31,7 +42,7 @@
 }
 
 .boton--nuevo {
-  @include boton-expecial(".boton--negro4", $verde-vivo, "\f15b", ".flipInX", "Nuevo");
+  @include boton-expecial(".boton--negro4", $kiwi-vivo, "\f15b", ".flipInX", "Nuevo");
 }
 
 .boton--eliminar {
@@ -39,20 +50,20 @@
 }
 
 .boton--editar {
-  @include boton-expecial(".boton--azul", $azul-opaco, "\f040", ".tada", "Editar");
+  @include boton-expecial(".boton--azul", $indigo-opaco, "\f040", ".tada", "Editar");
 }
 
 .boton--buscar {
-  @include boton-expecial(".boton--naranja", $amarillo-vivo, "\f002", ".pulse", "Buscar");
+  @include boton-expecial(".boton--celeste", $indigo, "\f002", ".pulse", "Buscar");
 }
 
 .boton--excel {
-  @include boton-expecial(".boton--verde", $verde-vivo, "\f1c3", ".pulse", "Exportar a Excel");
+  @include boton-expecial(".boton--negro4", $verde-vivo, "\f1c3", ".pulse", "Exportar a Excel");
   background: $excel;
 }
 
 .boton--imprimir {
-  @include boton-expecial(".boton--verde", $kiwi-vivo, "\f02f", "", "Imprimir");
+  @include boton-expecial(".boton--negro4", $naranja-vivo, "\f02f", "", "Imprimir");
 }
 
 .boton--siguiente {
@@ -66,4 +77,8 @@
 .boton--volver {
   @extend .boton--s;
   @include boton-expecial(".boton--negro4", $cyan-vivo, "\f112", "", "Volver");
+}
+
+.boton--enviar {
+  @include boton-expecial(".boton--cyan", $blanco, "\f1d8", "", "Enviar");
 }

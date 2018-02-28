@@ -1,16 +1,16 @@
 <template>
   <ul class="menu">
-    <li v-for="ruta in rutas" class="menu__item">
-      <div class="menu__item__content" v-on:click="accionar(ruta)" v-if="ruta.meta ? !ruta.meta.esconder : true">
-        <i class="fa fa-fw" v-bind:class="ruta.meta ? ruta.meta.icono : ''"></i>
-        <span>{{ruta.meta.titulo}}</span>
+    <li v-for="(ruta, index) in rutas" class="menu__item">
+      <div class="menu__item__content" @click="accionar(ruta, index)" v-if="ruta.meta ? !ruta.meta.esconder : true">
+        <i :class="ruta.meta ? ruta.meta.icono : ''"/>
+        <span>{{ ruta.meta.titulo }}</span>
       </div>
-      <div class="menu__hijos" v-bind:class="{'menu__hijos--active': ruta.name === estirado}">
-        <h1 class="menu__hijos__title">{{ruta.meta.titulo}}</h1>
+      <div class="menu__hijos" :class="{'menu__hijos--active': ruta.name === estirado}" @blur="cerrar" :tabindex="index + 1">
+        <h1 class="menu__hijos__title">{{ ruta.meta.titulo }}</h1>
         <ul>
-          <li tag="li" v-on:click="accionar(hijo)" v-for="hijo in ruta.children" class="menu__hijos__item" v-if="hijo.meta ? !hijo.meta.esconder : true">
-            <i class="fa fa-fw" v-bind:class="hijo.meta ? hijo.meta.icono : ''"></i>
-            <span>{{hijo.meta.titulo}}</span>
+          <li tag="li" @click="accionar(hijo)" v-for="hijo in ruta.children" class="menu__hijos__item" v-if="hijo.meta ? !hijo.meta.esconder : true">
+            <i :class="hijo.meta ? hijo.meta.icono : ''"/>
+            <span>{{ hijo.meta.titulo }}</span>
           </li>
         </ul>
       </div>
@@ -18,29 +18,29 @@
   </ul>
 </template>
 <script type="text/javascript">
-import pkg from "../../package.json";
-import _ from "lodash";
-
 export default {
   data,
   methods: {
     accionar,
-    cerrar
-  }
+    cerrar,
+  },
 };
 
 function data() {
   return {
     rutas: this.$router.options.routes[0].children,
-    estirado: ""
+    estirado: "",
   };
 }
 
-function accionar(ruta) {
+function accionar(ruta, index) {
   if (!ruta.children) {
     this.$router.push({ name: ruta.name });
     this.estirado = "";
   } else {
+    setTimeout(() => {
+      document.getElementsByClassName("menu__hijos")[index].focus();
+    }, 50);
     if (ruta.name === this.estirado) {
       this.estirado = "";
     } else {
@@ -55,7 +55,7 @@ function cerrar() {
 
 </script>
 <style lang="scss">
-@import "../sass/base/resets";
+@import "../sass/tema/globales";
 @import "../sass/base/colores";
 @import "../sass/base/fondos";
 @import "../sass/base/helpers";
@@ -72,17 +72,17 @@ $ancho-menu-movil: 160px;
 
 .menu__item{
   @extend %sans;
-  color: $gris6;
+  color: $blanco;
   cursor: pointer;
   font-size: .9em;
 
   &:hover{
-    background: transparentize($negro2, .9);
+    background: transparentize($magenta, .1);
   }
 
   &.router-link-active {
     @extend .text--blanco;
-    background: transparentize($cyan, .8);
+    background: transparentize($magenta, .5);
     cursor: default;
   }
 
@@ -102,13 +102,14 @@ $ancho-menu-movil: 160px;
 }
 
 .menu__hijos {
-  border-right: 3px solid $turquesa;
+  border-right: 3px solid $magenta;
   cursor: default;
   display: none;
   height: 0;
   opacity: 0;
   transition: all .5s;
   z-index: 5;
+  outline: none;
 
   ul {
     list-style: none;
@@ -152,7 +153,7 @@ $ancho-menu-movil: 160px;
   padding: .5em 1em;
 
   &:hover {
-    background: transparentize($verde, .8);
+    background: transparentize($magenta, .8);
   }
 
   .fa {

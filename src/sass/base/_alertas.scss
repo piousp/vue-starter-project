@@ -1,4 +1,4 @@
-.alertas {
+.toast-container {
   position: fixed;
   top: 0;
   right: 10px;
@@ -10,12 +10,12 @@
   }
 }
 
-.alertas__alerta {
+.toast {
   @extend .sombra-media;
   @extend .animated;
   @extend .rotateInDownRight;
   animation-duration: .45s !important;
-  border-radius: 3px;
+  border-radius: 6px;
   cursor: pointer;
   margin: 15px 0;
   overflow: hidden;
@@ -23,6 +23,7 @@
   padding-left: 50px;
   position: relative;
   width: 100%;
+  z-index: 99;
 
   @media(min-width: $reflex-md) {
     width: 300px;
@@ -30,32 +31,21 @@
 
 }
 
-.alertas__alerta__cerrar {
-  color: transparentize($blanco, .5);
-  cursor: pointer;
-  position: absolute;
-  right: 3px;
-  top: 3px;
-}
-
-.alertas__alerta__titulo {
-  @extend %sans;
+.toast-title {
+  @extend %serif;
   font-size: 1.2;
   font-weight: bold;
 }
 
-.alertas__alerta__mensaje {
+.toast-message {
   @extend %sans;
-  color: $blanco;
+  color: $negro4;
   font-size: small;
 }
 
 @mixin estilo-alerta($color, $icono, $animacion) {
-  background: transparentize(darken($color, 45%), .1);
-
-  .alertas__alerta__titulo {
-    color: $color;
-  }
+  background: transparentize($grise, .05);
+  border-bottom: 8px solid $grise;
 
   &::before {
     @extend .animated;
@@ -69,21 +59,25 @@
     text-shadow: 0 2px 2px transparentize($negro4, .5);
     top: 13px;
   }
+
+  .toast-title {
+    color: $color
+  }
 }
 
-.alertas__alerta--success {
-  @include estilo-alerta($kiwi-vivo, "\f00c", ".tada");
+.toast-success {
+  @include estilo-alerta($verde-vivo, "\f00c", ".tada");
 }
 
-.alertas__alerta--info {
-  @include estilo-alerta($cyan-vivo, "\f129", ".pulse");
+.toast-info {
+  @include estilo-alerta($celeste-vivo, "\f129", ".pulse");
 }
 
-.alertas__alerta--warning {
-  @include estilo-alerta($ambar-vivo, "\f12a", ".shake");
+.toast-warning {
+  @include estilo-alerta($ambar-vivo, "\f071", ".shake");
 }
 
-.alertas__alerta--error {
+.toast-error {
   @include estilo-alerta($rosado-vivo, "\f0f3", ".swing");
 
   &::before{

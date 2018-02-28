@@ -1,15 +1,15 @@
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Serif");
+@import url("https://fonts.googleapis.com/css?family=Catamaran:300,400,500,700,900|Martel:300,400,700");
 
 %sans {
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Catamaran", sans-serif;
 }
 
 %serif {
-  font-family: "Noto Serif", serif;
+  font-family: "Martel", serif;
 }
 
 %font-awesome {
-  font-family: "fontawesome";
+  font-family: "Font Awesome 5 Pro";
 }
 
 %headers {
@@ -69,15 +69,21 @@
 }
 
 code {
-  @extend .fondo--negro2;
-  @extend .text--center;
-  @extend .text--amarillo;
-  padding: 3px;
+  @extend .fondo--negro4;
+  @extend .text--blanco;
+  border-radius: 3px;
+  font-family: monospace;
+  padding: 0.5em 1em;
 }
 
 .text {
   @extend %sans;
+  font-weight: 400;
   color: $negro4;
+}
+
+p.text{
+  margin: 0.3em 0;
 }
 
 .text--bold {
@@ -246,7 +252,7 @@ code {
   border-top-right-radius: 4px;
   display: inline-block;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 300;
   line-height: 1;
   margin-left: 1em;
   min-width: 10px;

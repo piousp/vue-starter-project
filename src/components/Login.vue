@@ -2,7 +2,7 @@
   <section class="login">
     <form class="login__body" novalidate v-on:submit.stop.prevent="login()">
       <div class="text--center">
-        <img src="/static/Ciris-contraforma.png" alt="Ciris" class="img-responsive" height="200px">
+        <h1 class="h1 text--blanco"><i class="fa fa-fw fa-flask"></i> Laboratorio de Materiales Carlos Araya</h1>
       </div>
       <div class="form__group" v-bind:class="{ 'form__group--error': errors.has('usuario') && submitted }">
         <label for="usuario" class="form__label">Correo:</label>
@@ -73,7 +73,7 @@ export default {
   justify-content: center;
 
   &::before {
-    background: transparentize($negro2, .5);
+    background: transparentize($negro2, .1);
     width: 100%;
     height: 100%;
     position: fixed;
@@ -83,7 +83,7 @@ export default {
 
 .login__body {
   @extend .sombra;
-  background: transparentize($negro, .4);
+  background: transparentize($negro2, .2);
   padding: 15px 0;
   width: 90%;
 

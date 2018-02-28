@@ -25,36 +25,67 @@
 }
 
 .form__input {
+  @extend %sans;
   background: $blanco;
-  border: 0;
-  border-bottom: 1px solid $grisa;
+  border-radius: 5px;
+  box-shadow: inset 0 -4px 6px -3px $grisd,
+    inset 0 3px 6px -3px $grise,
+    0 2px 2px -1px $sombra1;
+  border: 1px solid $grisc;
   color: $negro4;
   font-size: 1em;
-  padding: .5em 0;
+  padding: .5em;
   resize: none;
+  transition: all ease 0.5s;
   width: 100%;
 
   &:autofill {
-    background-color: transparent !important;
+    background-color: $blanco !important;
   }
 
   &:focus,
   &:active {
+    @extend .text--bold;
     border: 0;
-    border-bottom: 2px solid $cyan-vivo;
-    box-shadow: inset 0 -3px 4px -2px transparentize($cyan-vivo, .5), 0 3px 4px -2px transparentize($cyan-vivo, .5);
+    background: $cyan-vivo;
+    border: 1px solid $cyan;
+    box-shadow: inset 0 -4px 6px -3px darken($cyan-vivo, 5%),
+      inset 0 3px 6px -3px lighten($cyan-vivo, 5%),
+      0 0 5px 0 lighten($cyan-vivo, 5%),
+      0 2px 2px -1px $sombra1;
+    color: $blanco;
     outline-color: transparent;
   }
 
   &:disabled {
-    border-bottom: 1px dashed $grisa;
+    border: 1px solid $grisc;
     color: $grisa;
+    background: $grisd;
+    box-shadow: inset 0 -4px 6px -3px lighten($grisa, 25%),
+      inset 0 3px 6px -3px darken($grisa, 5%);
     cursor: not-allowed;
 
     &:focus,
     &:active {
       outline-color: transparent;
+      box-shadow: 0 0 0 $negro;
     }
+  }
+}
+
+p.form__input{
+  @extend %serif;
+  background: transparent;
+  box-shadow: 0 0 0 0 $sombra1;
+  border: 0;
+  padding: .5em 0;
+
+  &:focus,
+  &:active {
+    border: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: 0 0 0 0 $sombra1;
   }
 }
 
