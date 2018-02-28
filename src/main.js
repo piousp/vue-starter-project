@@ -5,12 +5,12 @@ import Datepicker from "vuejs-datepicker";
 import VeeValidate from "vee-validate";
 import VueI18n from "vue-i18n";
 import VueToastr from "@deveodk/vue-toastr";
-import "@deveodk/vue-toastr/dist/@deveodk/vue-toastr.css";
 import App from "./App.vue";
 import router from "./config/router";
 import Auth from "./config/auth.js";
 import axios from "./config/axios.js";
 import messages from "./i18n";
+import "./config/filtros.js";
 
 const pkg = require("../package.json").name;
 
@@ -31,7 +31,7 @@ const i18n = new VueI18n({
 });
 
 /* eslint-disable no-new */
-new Vue({
+export default new Vue({
   el: "#app",
   router,
   components: { App },

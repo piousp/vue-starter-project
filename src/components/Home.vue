@@ -1,60 +1,61 @@
 <template>
   <div class="layout">
-    <div class="layout__menu" tabindex="1" v-on:blur="cerrar" v-bind:class="{'layout__menu--active': estaMostrado}">
-      <directorio></directorio>
+    <div class="layout__menu"
+         tabindex="0"
+         :class="{'layout__menu--active': estaMostrado}">
+      <directorio/>
     </div>
     <div class="layout__content">
-      <navbar></navbar>
+      <navbar/>
       <div class="layout__padding">
-        <router-view></router-view>
-        <vue-progress-bar></vue-progress-bar>
+        <router-view/>
+        <vue-progress-bar/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Menu from '@/components/Menu.vue'
-import Navbar from '@/components/Navbar.vue'
-export default {
-  name: 'app',
-  components: {directorio: Menu, Navbar},
-  created(){
-    this.$auth.checkAuth();
-    this.$on("mostrarMenu", function() {
-      this.activarMenu();
-    });
-  },
-  data() {
-    return {
-      estaMostrado: false
-    };
-  },
-  methods: {
-    activarMenu() {
-      this.estaMostrado = !this.estaMostrado;
-      setTimeout(() => {
-        this.$el.querySelector(".layout__menu").focus();
-      }, 100);
-    },
-    cerrar() {
-      this.estaMostrado = false;
-    }
-  },
+import Menu from "./Menu.vue";
+import Navbar from "./Navbar.vue";
+
+function data() {
+  return {
+    estaMostrado: false,
+  };
 }
+
+function created() {
+  this.$auth.checkAuth();
+  this.$on("mostrarMenu", () => {
+    this.estaMostrado = !this.estaMostrado;
+  });
+}
+
+export default {
+  name: "App",
+  components: { directorio: Menu, Navbar },
+  data,
+  created,
+};
 </script>
 
 <style lang="scss">
   @import "../sass/base/colores";
   @import "../sass/base/helpers";
-  @import "../sass/base/resets";
+  @import "../sass/tema/globales";
+  html, body{
+    background: $gris-fondo;
+  }
+
   .layout {
     height: 100%;
+    background: $gris-fondo;
   }
 
   .layout__menu{
-    @extend .sombra;
-    background: $grise;
+    background: $negro2;
+    box-shadow: inset -1px 0 0 $negro;
     z-index: 3;
     position: fixed;
     height: 100%;

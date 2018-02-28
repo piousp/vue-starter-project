@@ -11,7 +11,7 @@
   @include titular;
 
   &::after {
-    border-bottom: 2px solid $indigo-vivo;
+    border-bottom: 2px solid $azul-vivo;
     content: "";
     flex-grow: 1;
     height: .3em;
@@ -24,7 +24,7 @@
   @extend .h2;
   @extend .text--uppercase;
   @extend .text--justify;
-  @extend .text--indigo;
+  @extend .text--azul;
 }
 
 .subtitulo-terciario {

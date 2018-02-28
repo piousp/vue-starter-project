@@ -1,4 +1,5 @@
-@import "base/resets";
+@import "../../node_modules/normalize.css/normalize";
+@import "tema/globales";
 @import "base/colores";
 @import "base/fondos";
 @import "base/tipografia";
@@ -17,9 +18,10 @@
 //TEMA
 @import "tema/botones";
 @import "tema/tipografia";
-//@import "../../node_modules/highlight.js/styles/monokai-sublime";
+
 
 // Documentación http://leejordan.github.io/reflex/docs/
 @import "../../node_modules/reflex-grid/scss/reflex";
 @import "../../node_modules/animate.css/animate";
 @import "../../node_modules/sweetalert2/dist/sweetalert2.min";
+@import "../../node_modules/vue-nav-tabs/themes/vue-tabs";

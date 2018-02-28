@@ -6,6 +6,7 @@
       &::before {
         @extend .animated;
         @extend .rubberBand;
+        font-weight: 900;
         animation-delay: 0s !important;
         content: "\f192";
       }
@@ -20,7 +21,7 @@
 
     &::before {
       @extend %font-awesome;
-      content: "\f1db";
+      content: "\f111";
       font-size: 1.5em;
       left: 0;
       position: absolute;

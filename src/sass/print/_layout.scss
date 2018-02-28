@@ -6,11 +6,17 @@
 
   .layout__bar,
   .panel__options,
-  .panel--invisible,
+  .print--hide,
   .navbar,
   .layout__menu,
   .boton,
   .fa {
+    display: none;
+  }
+}
+
+@media screen {
+  .screen--hide {
     display: none;
   }
 }

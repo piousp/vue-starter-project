@@ -2,11 +2,13 @@
 .checkbox {
   input {
     @extend %switchcheck;
+    font-weight: 300;
 
     &:checked + label {
       &::before {
         @extend .animated;
         @extend .rubberBand;
+
         animation-delay: 0s !important;
         content: "\f14a";
       }
@@ -22,11 +24,10 @@
     &::before {
 
       @extend %font-awesome;
-      content: "\f096";
+      content: "\f0c8";
       font-size: 1.5em;
       left: 0;
       position: absolute;
-      top: .1em;
       transition: all .5s;
     }
   }
