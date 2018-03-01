@@ -1,11 +1,8 @@
 .tabla {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
   border-collapse: collapse;
   margin-bottom: 1em;
   position: relative;
   width: 100%;
-  margin-top: 5px;
 
   th,
   td {
@@ -90,7 +87,7 @@
 
 .tabla__header,
 .tabla__footer {
-  @extend %serif;
+  @extend .h5;
   background: $celeste-opaco;
   border-bottom: 2px solid $azul;
   color: $blanco;
@@ -108,7 +105,6 @@
     padding: 10px 15px;
   }
 }
-
 
 .tabla__footer {
   border-bottom: 0;

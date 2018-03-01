@@ -34,7 +34,7 @@
 }
 
 .boton--guardar {
-  @include boton-expecial(".boton--verde", $ambar, "\f019", ".flip", "Guardar");
+  @include boton-expecial(".boton--verde", $kiwi-vivo, "\f019", ".flip", "Guardar");
 }
 
 .boton--cancelar {
@@ -76,7 +76,7 @@
 
 .boton--volver {
   @extend .boton--s;
-  @include boton-expecial(".boton--negro4", $cyan-vivo, "\f112", "", "Volver");
+  @include boton-expecial(".boton--negro4", $grisa, "\f3e5", "", "Volver");
 }
 
 .boton--enviar {

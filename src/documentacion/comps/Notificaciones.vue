@@ -3,7 +3,7 @@
     <h1 class="titulo">Notificaciones Toastr</h1>
     <p class="text">Documentación: <a href="https://github.com/CodeSeven/toastr">https://github.com/CodeSeven/toastr</a></p>
     <pre class="javascript">
-      <code v-cis-code>
+      <code style="display:block;">
         import toastr from "toastr";
         export default {
         methods: {
