@@ -1,3 +1,6 @@
 [submodule "src/sass"]
 	path = src/sass
 	url = git@gitlab.com:ciris-base/estilizador-sass.git
+[submodule "src/documentacion"]
+	path = src/documentacion
+	url = git@gitlab.com:ciris-base/documentacion-vue.git
