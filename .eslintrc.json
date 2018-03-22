@@ -31,6 +31,7 @@
     "prefer-promise-reject-errors": "off",
     "vue/max-attributes-per-line": "off",
     "vue/html-self-closing": ["error", {"html": {"void": "never"}}],
-    "lodash/prefer-lodash-method": "off"
+    "lodash/prefer-lodash-method": "off",
+    "promise/no-callback-in-promise"
   }
 }
